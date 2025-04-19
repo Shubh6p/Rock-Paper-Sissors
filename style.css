@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2C3E50, #4CA1AF);
+  animation: backgroundAnimation 10s infinite alternate ease-in-out;
+}
+
+@keyframes backgroundAnimation {
+  from { background: linear-gradient(135deg, #2C3E50, #4CA1AF); }
+  to { background: linear-gradient(135deg, #1C2833, #16A085); }
+}
+
+.game-title {
+  position: fixed;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  z-index: 1000;
+}
+
+.round-selection, .scoreboard {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 15px;
+  border-radius: 10px;
+  width: 200px;
+  text-align: center;
+}
+
+.round-selection label{
+  color: white;
+}
+
+
+.round-selection input {
+  width: 50px;
+  font-size: 1rem;
+  margin: 5px;
+}
+
+.round-selection button {
+  background: #7d2ae8;
+  color: white;
+  font-size: 1rem;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.round-selection button:hover {
+  background: #5a1fb0;
+}
+
+.error-message {
+  color: red;
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+
+.row-container {
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center;
+  gap: 50px; /* Creates space between scoreboard & round selection */
+  width: 100%;
+  max-width: 800px; /* Keeps it manageable on large screens */
+  margin-top: 120px;
+}
+
+.scoreboard h2, p {
+  font-size: 1.0rem;
+  margin-bottom: 10px;
+  color: white;
+
+}
+
+.container {
+  margin-top: 80px; /* Adjusted for title & round selection */
+  display: flex;
+  flex-direction: column;
+  max-width: 535px;
+  width: 100%;
+  padding: 2rem 5rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3), -10px -10px 20px rgba(255, 255, 255, 0.15);
+  transition: 0.3s ease-in-out;
+}
+
+/* Hand-Shake Animation */
+.container.start .user_result img {
+  transform-origin: left;
+  animation: userShake 0.7s ease infinite;
+}
+
+@keyframes userShake {
+  0%, 100% { transform: rotate(90deg); }
+  50% { transform: rotate(100deg); } /* Slight tilt during shake */
+}
+
+.container.start .bot_result img {
+  transform-origin: right;
+  animation: botShake 0.7s ease infinite;
+}
+
+@keyframes botShake {
+  0%, 100% { transform: rotate(-90deg); }
+  50% { transform: rotate(-100deg); } /* Slight tilt during shake */
+}
+
+
+.result_field {
+  text-align: center;
+}
+
+.result_images {
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+  animation: fadeIn 1.5s ease-in-out;
+
+}
+
+.result_images img {
+  width: 100px;
+  filter: drop-shadow(0px 0px 5px rgba(255, 255, 255, 0.6));
+}
+
+/* Smooth Hover Effects */
+.option_image img {
+  width: 55px;
+  filter: grayscale(30%);
+  transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.option_image:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.15);
+}
+
+/* Neumorphism Effect on Game Cards */
+.option_images {
+  display: flex;
+  flex-direction: row; /* Ensure choices are in a row */
+  align-items: center;
+  justify-content: center;
+  gap: 35px; /* Adds spacing between options */
+  width: 100%;
+  margin-top: 20px;
+}
+
+.option_image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  animation: fadeIn 1.5s ease-in-out;
+
+}
+
+.option_image p{
+  color: white;
+}
+
+
+
+.option_image.active {
+  opacity: 1;
+  filter: brightness(120%) drop-shadow(0px 0px 15px rgba(125, 42, 232, 1));
+}
+
+.result {
+  position: relative;
+  text-align: center;
+  font-size: 2rem;
+  color: #7d2ae8;
+  margin: 25px 0;
+  font-weight: bold;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 380px) {
+  .option_images { justify-content: space-between; }
+  .option_image img { width: 40px; }
+}
+
+.label {
+  position: absolute;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.user_label {
+  top: -50px;
+  left: 25%;
+}
+
+.bot_label {
+  top: -50px;
+  right: 25%;
+}
+
+/* Mobile-Specific*/
+@media (max-width: 380px) {
+  .game-title {
+    font-size: 1.2rem;
+    padding: 10px;
+  }
+
+  .round-selection {
+    width: 160px;
+    padding: 10px;
+  }
+
+  .scoreboard {
+    width: 180px;
+    padding: 10px;
+  }
+  .scoreboard p,h2{
+    color: white;
+  }
+  
+
+  .container {
+    width: 85%;
+    padding: 2rem;
+  }
+
+  .option_images {
+    flex-wrap: wrap;
+  }
+
+  .option_image img {
+    width: 40px;
+  }
+  .game-title{
+    font-size: 50px;
+    padding: 10px;
+  }
+}
