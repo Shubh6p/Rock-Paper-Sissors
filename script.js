@@ -109,3 +109,8 @@ function handleOptionClick(event) {
     }
   }, 2000);
 }
+
+// ✅ FIX: Attach click events to each option
+optionImages.forEach((option) => {
+  option.addEventListener("click", handleOptionClick);
+});
