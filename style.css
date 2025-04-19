@@ -39,7 +39,7 @@ body {
 
 .round-selection, .scoreboard {
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+
   padding: 15px;
   border-radius: 10px;
   width: 200px;
@@ -104,7 +104,7 @@ body {
   padding: 2rem 5rem;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(15px);
+
   box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3), -10px -10px 20px rgba(255, 255, 255, 0.15);
   transition: 0.3s ease-in-out;
 }
@@ -220,7 +220,7 @@ body {
   color: #ffffff;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
   background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(8px);
+
   padding: 5px 10px;
   border-radius: 8px;
 }
