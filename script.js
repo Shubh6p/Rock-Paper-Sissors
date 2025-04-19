@@ -10,7 +10,7 @@ const botResult = document.querySelector(".bot_result img");
 const result = document.querySelector(".result");
 const optionImages = document.querySelectorAll(".option_image");
 
-const botImages = ["images/rock.png", "images/paper.png", "images/scissors.png"];
+const botImages = ["rock.png", "paper.png", "scissors.png"];
 const outcomes = {
   RR: "Draw",
   RP: "BOT",
@@ -56,7 +56,7 @@ function handleOptionClick(event) {
   const clickedImage = event.currentTarget;
   const clickedIndex = Array.from(optionImages).indexOf(clickedImage);
 
-  userResult.src = botResult.src = "images/rock.png";
+  userResult.src = botResult.src = "rock.png";
   result.textContent = "Wait...";
 
   optionImages.forEach((image, index) => {
