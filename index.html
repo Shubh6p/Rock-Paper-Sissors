@@ -2,71 +2,91 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rock Paper Scissors Battle</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  
-  <!-- Game Title -->
+
+  <!-- Header -->
   <header class="game-title">
     <h1>Rock Paper Scissors Battle</h1>
+    <button id="darkModeToggle" aria-pressed="false" aria-label="Toggle dark mode">🌙 Dark Mode</button>
   </header>
 
-  <div class="row-container">
-    <!-- Round Selection -->
-    <div class="round-selection">
-      <label for="rounds">Select Odd Number of Rounds:</label>
-      <input type="number" id="rounds" min="1" step="1" />
-      <button id="startGame">Start Game</button>
-      <p class="error-message"></p>
+  <!-- Main Content -->
+  <main class="main-content">
+    
+    <!-- Round Setup & Score -->
+    <div class="row-container">
+      <!-- Rounds Input -->
+      <section class="round-selection">
+        <label for="rounds">Select Odd Number of Rounds:</label>
+        <input type="number" id="rounds" min="1" step="2" />
+        <button id="startGame">Start Game</button>
+        <button id="resetGame" disabled>Reset Game</button>
+        <p class="error-message" role="alert"></p>
+
+        <label for="difficulty" class="difficulty-label">Select Difficulty:</label>
+        <select id="difficulty" aria-label="Select AI difficulty">
+          <option value="easy" selected>Easy</option>
+          <option value="hard">Hard (AI cheats)</option>
+        </select>
+      </section>
+
+      <!-- Scoreboard -->
+      <section class="scoreboard">
+        <h2>Scoreboard</h2>
+        <p>YOU: <span id="userScore">0</span></p>
+        <p>BOT: <span id="botScore">0</span></p>
+      </section>
     </div>
-  
-    <!-- Scoreboard -->
-    <div class="scoreboard">
-      <h2>Scoreboard</h2>
-      <p>YOU: <span id="userScore">0</span></p>
-      <p>BOT: <span id="botScore">0</span></p>
-    </div>
-  </div>  
+
+    <!-- Game Area -->
+    <section class="container">
+      <div class="result_field">
+        <!-- Hands -->
+        <div class="result_images">
+          <div class="user_result hand_wrapper">
+            <div class="label over-hand">YOU</div>
+            <img src="rock.png" alt="Your choice" />
+          </div>
+          <div class="bot_result hand_wrapper">
+            <div class="label over-hand">BOT</div>
+            <img src="rock.png" alt="Bot's choice" />
+          </div>
+        </div>
+
+        <!-- Result Text -->
+        <div class="result">Let's Play!</div>
+
+        <!-- Choices -->
+        <div class="option_images">
+          <button class="option_image" aria-label="Rock">
+            <img src="rock.png" alt="Rock" />
+            <p>Rock</p>
+          </button>
+          <button class="option_image" aria-label="Paper">
+            <img src="paper.png" alt="Paper" />
+            <p>Paper</p>
+          </button>
+          <button class="option_image" aria-label="Scissors">
+            <img src="scissors.png" alt="Scissors" />
+            <p>Scissors</p>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
   
 
-  <!-- Game Container -->
-  <section class="container">
-    <div class="result_field">
-      <div class="result_images">
-        <div class="label user_label" id="userNameLabel">YOU</div>
-        <span class="user_result">
-          <img src="rock.png" alt="User's choice image" />
-        </span>
-        <div class="label bot_label">BOT</div>
-        <span class="bot_result">
-          <img src="rock.png" alt="BOT's choice image" />
-        </span>
-      </div>
-      
-      <!-- Place "Let's Play!" text BELOW hands -->
-      <div class="result">Let's Play!</div>
-      
-      <!-- Selection Options -->
-      <div class="option_images">
-        <span class="option_image">
-          <img src="rock.png" alt="Rock image" />
-          <p>Rock</p>
-        </span>
-        <span class="option_image">
-          <img src="paper.png" alt="Paper image" />
-          <p>Paper</p>
-        </span>
-        <span class="option_image">
-          <img src="scissors.png" alt="Scissors image" />
-          <p>Scissors</p>
-        </span>
-      </div>
-    </div>    
-  </section>
+  <!-- Audio elements for sound effects -->
+  <audio id="winSound" src="win.mp3" preload="auto"></audio>
+  <audio id="loseSound" src="lose.mp3" preload="auto"></audio>
+  <audio id="drawSound" src="draw.mp3" preload="auto"></audio>
 
+  <!-- JavaScript -->
   <script src="script.js" defer></script>
 
 </body>
